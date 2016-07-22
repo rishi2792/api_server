@@ -15,7 +15,8 @@ interface CampaignRepositoryInterface {
     public function get($result_limit,$input);
     public function create($input);
 //    public function post();
-//    public function update();
+    public function addteam($campaign_id,$input);
 //    public function delete();
-//    
+//
+    public function budget($campaign_id,$input);
 }

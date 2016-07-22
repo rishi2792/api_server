@@ -13,13 +13,13 @@ class campaign extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\Models\User', 'campaigns_users', 'campaign_id', 'user_id')->withPivot('role')->withTimestamps();
+        return $this->belongsToMany('App\Models\User', 'campaigns_users', 'campaign_id', 'user_id')->withPivot('campaign_creator')->withTimestamps();
 
     }
 
     public function image()
     {
-        return $this->morphMany('App\Image\Image', 'imageable');
+        return $this->morphMany('App\Models\Image\Image', 'imageable');
 
     }
 

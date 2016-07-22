@@ -53,7 +53,12 @@ $api->version('v1', ['prefix' => 'api/v1','middleware' => 'api.auth','providers'
     $api->get('test3', 'App\Http\Controllers\TestController@test3');
 
     $api->post('campaign','App\Http\Controllers\Campaign\CampaignController@create');
-    
+    $api->post('campaign/{campaign_id}/people','App\Http\Controllers\Campaign\CampaignController@addteam');
+    $api->post('campaign/{campaign_id}/budget','App\Http\Controllers\Campaign\CampaignController@budget');
+
+    $api->post('campaign/{campaign_id}/wip','App\Http\Controllers\Campaign\CampaignController@wip');
+
+
 
 
 

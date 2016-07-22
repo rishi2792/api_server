@@ -36,12 +36,31 @@ class CampaignController extends BaseController
 
 
         return [
-
             'name'=>'required',
-            'about'=>'required',
             'description'=>'required'
+        ];
+
+    }
+
+    public function getBudgetValidationRules(){
 
 
+        return [
+            'total_budget'=>'required|integer',
+            'budget'=>'required',
+            'days'=>'required'
+
+        ];
+    }
+
+    public function getAddTeamRules(){
+
+
+        return [
+            'name'=>'required|string',
+            'email'=>'required|email',
+            'role'=>'required|string',
+            'facebook_link'=>'required'
         ];
 
     }
@@ -76,11 +95,44 @@ class CampaignController extends BaseController
 
        // $social=explode(',');
 
-      return  $campaign=$this->campaignRepositoryInterface->create($input);
+        $campaign=$this->campaignRepositoryInterface->create($input);
 
         return $this->response->item($campaign,$this->campaignTransformer);
 
     }
 
+    public function  addteam($campaign_id){
+
+        $input=Input::all();
+//        $validationrules=$this->getAddTeamRules();
+//        $this->validateOrFail($input,$validationrules);
+        
+      return  $addpeople=$this->campaignRepositoryInterface->addteam($campaign_id,$input);
+    //   return $this->response->item($addpeople,$this->campaignTransformer);
+    }
+
+
+    public function budget($campaign_id){
+
+
+        $input=Input::all();
+
+//        $validationrules=$this->getBudgetValidationRules();
+//        $this->validateOrFail($input,$validationrules);
+
+        $campaign=$this->campaignRepositoryInterface->budget($campaign_id,$input);
+        return $this->response->item($campaign,$this->campaignTransformer);
+    }
+
+
+
+    public function wip($campaign_id){
+
+        $input=Input::all();
+        $campaign=$this->campaignRepositoryInterface->wip($campaign_id,$input);
+        return $this->response->item($campaign,$this->campaignTransformer);
+
+
+    }
 
 }
