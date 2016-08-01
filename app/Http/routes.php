@@ -59,6 +59,14 @@ $api->version('v1', ['prefix' => 'api/v1','middleware' => 'api.auth','providers'
     $api->post('campaign/{campaign_id}/wip','App\Http\Controllers\Campaign\CampaignController@wip');
 
 
+    $api->post('campaign/{campaign_id}/projectinfo','App\Http\Controllers\Campaign\CampaignController@projectinfo');
+
+    $api->post('campaign/{campaign_id}/rewards','App\Http\Controllers\Campaign\RewardController@create');
+    $api->post('transaction/{campaign_id}/reward/{reward_id}/initiate','App\Http\Controllers\Transaction\TransactionController@initiate');
+  
+    $api->post('transaction/{campaign_id}/reward/{reward_id}/submit','App\Http\Controllers\Transaction\TransactionController@submit');
+
+
 
 
 

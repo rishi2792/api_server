@@ -38,7 +38,7 @@ class CampaignTransformer extends TransformerAbstract
             'name' => (string)$campaign->name,
             'description' => (string)$campaign->description,
             'about' => (string)$campaign->about,
-            'faq' => (boolean)$campaign->faq,
+            'faq' => (string)$campaign->faq,
             'days' => (integer)$campaign->days,
             'budget' => (string)$campaign->budget,
             'social_handle' => (string)$campaign->social_handle,

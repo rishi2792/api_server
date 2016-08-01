@@ -34,5 +34,17 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Repositories\Campaign\CampaignRepositoryInterface',
             'App\Repositories\Campaign\CampaignRepository'
         );
+
+
+        $this->app->bind(
+            'App\Repositories\Campaign\RewardRepositoryInterface',
+            'App\Repositories\Campaign\RewardRepository'
+        );
+
+
+        $this->app->bind(
+            'App\Repositories\Transaction\TransactionRepositoryInterface',
+            'App\Repositories\Transaction\TransactionRepository'
+        );
     }
 }

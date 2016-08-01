@@ -225,8 +225,59 @@ class CampaignRepository implements CampaignRepositoryInterface
 
         return $campaign;
 
+    }
 
 
+     public function projectinfo($campaign_id,$input){
+
+          $campaign=campaign::find($campaign_id);
+
+          $faqs=json_decode($campaign->faq);
+
+
+        foreach ($input['faq'] as $id=>$question) {
+
+            if ($id==1) {
+
+                foreach ($question as $quest => $answer) {
+                    {
+
+                        $faqs[0]->answer = $answer;
+
+
+                    }
+                }
+            }
+
+            else if ($id==2) {
+
+                foreach ($question as $quest => $answer) {
+
+                    {
+                        $faqs[1]->answer = $answer;
+
+                    }
+                }
+            }
+            else{
+
+                foreach ($question as $quest => $answer) {
+                    $array=['id'=>$id,'question'=>$quest,'answer'=>$answer];
+                    array_push($faqs,$array);
+                }
+
+            }
+
+        }
+         $json=  json_encode($faqs);
+
+        $campaign->fill(['about'=>$input['about'],'faq'=>$json]);
+
+        $campaign->save();
+
+        return $campaign;
+
+         
 
 
 

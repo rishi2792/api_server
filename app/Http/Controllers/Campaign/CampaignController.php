@@ -135,4 +135,11 @@ class CampaignController extends BaseController
 
     }
 
+
+    public function projectinfo($campaign_id){
+
+        $input=Input::all();
+        $campaign=$this->campaignRepositoryInterface->projectinfo($campaign_id,$input);
+        return $this->response->item($campaign,$this->campaignTransformer);
+    }
 }

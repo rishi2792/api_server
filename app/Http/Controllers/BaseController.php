@@ -126,7 +126,7 @@ class BaseController extends Controller
                 $response['collection']['links'][] = ['rel' => 'prev', 'href' => $collection->previousPageUrl()];
             }
 
-            if ($collection->nextPageUrl() !== nujhl) {
+            if ($collection->nextPageUrl() !== null) {
                 $response['collection']['links'][] = ['rel' => 'next', 'href' => $collection->nextPageUrl()];
             }
             if ($collection->count() !== null) {
